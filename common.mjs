@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 function fetchJson(url) {
-	return fetch(url).then(res => res.json())
+	return fetch(url).then(res => res.json()).catch(err => ({ status: "fetch_error", message: err }))
 }
 function fetchWithKey(apiKey) {
 	return (url) => fetchJson(url + `&auth=${apiKey}`)
